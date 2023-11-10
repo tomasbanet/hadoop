@@ -15,9 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef __CYGWIN__
-#include <execinfo.h>
-#endif
 #include "lib/commons.h"
 #include "util/StringUtil.h"
 #include "NativeTask.h"
@@ -64,14 +61,6 @@ HadoopException::HadoopException(const string & what) {
   void *array[64];
   size_t size;
 
-#ifndef __CYGWIN__
-  size = backtrace(array, 64);
-  char ** traces = backtrace_symbols(array, size);
-  for (size_t i = 0; i < size; i++) {
-    _reason.append("\n\t");
-    _reason.append(traces[i]);
-  }
-#endif
 }
 
 ///////////////////////////////////////////////////////////
