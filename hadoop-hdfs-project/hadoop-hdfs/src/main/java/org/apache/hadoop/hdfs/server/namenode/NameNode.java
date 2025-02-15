@@ -1137,7 +1137,7 @@ public class NameNode extends ReconfigurableBase implements
   protected NameNode(Configuration conf, NamenodeRole role)
       throws IOException {
     super(conf);
-    this.tracer = new Tracer.Builder("NameNode").
+    this.tracer = new Tracer.Builder().
         conf(TraceUtils.wrapHadoopConf(NAMENODE_HTRACE_PREFIX, conf)).
         build();
     this.role = role;
